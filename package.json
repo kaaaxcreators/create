@@ -10,7 +10,9 @@
     "build": "tsc",
     "dev": "ts-node src/index.ts",
     "start": "node dist/index.js",
-    "release": "npx semantic-release"
+    "release": "npx semantic-release",
+    "lint": "eslint . --ignore-path ./.gitignore",
+    "lint:fix": "eslint . --ignore-path ./.gitignore --fix"
   },
   "keywords": [],
   "author": "Bernd Storath <bernd@kaaaxcreators.de>",

@@ -121,8 +121,8 @@ export function VSCODE_EXTENSIONS_WEB(): typeof VSCODE_EXTENSIONS {
   return copy;
 }
 
-export function README(name: string): string {
-  const MARKDOWN = `# ${name}\n`;
+export function README(name: string, description: string, license: string): string {
+  const MARKDOWN = `# ${name}\n\n## ${description}\n\n### 📜 License\n\nThis project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.\n`;
   return MARKDOWN;
 }
 

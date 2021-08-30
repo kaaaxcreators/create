@@ -87,7 +87,10 @@ export async function setupDir(options: OPTIONS): Promise<boolean> {
         2
       )
     );
-    await writeFile(join(options.FOLDER, 'README.md'), DEFAULTS.README(options.NAME));
+    await writeFile(
+      join(options.FOLDER, 'README.md'),
+      DEFAULTS.README(options.NAME, options.DESCRIPTION, options.LICENSE)
+    );
     const licenses = await axios.get<GithubContents[]>(
       'https://api.github.com/repos/licenses/license-templates/contents/templates',
       { responseType: 'json' }
