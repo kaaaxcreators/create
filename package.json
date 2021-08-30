@@ -51,5 +51,8 @@
   "funding": {
     "type": "individual",
     "url": "https://www.buymeacoffee.com/kaaaxcreators"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -131,6 +131,9 @@ function generatePackageJSON(options: OPTIONS): PACKAGEJSON {
     main: 'src/index.ts',
     author: options.AUTHOR,
     license: options.LICENSE,
+    scripts: DEFAULTS.DEFAULT.scripts,
+    dependencies: {},
+    devDependencies: {},
     repository: {
       url: 'git+https://github.com/<user>/<repo>.git',
       type: 'git'
@@ -144,9 +147,7 @@ function generatePackageJSON(options: OPTIONS): PACKAGEJSON {
       url: 'https://www.buymeacoffee.com/kaaaxcreators'
     },
     files: ['dist'],
-    scripts: DEFAULTS.DEFAULT.scripts,
-    dependencies: {},
-    devDependencies: {}
+    publishConfig: { access: 'public' }
   };
   if (options.AUTHOR) {
     JSON.author += ` <${options.EMAIL}>`;
@@ -254,6 +255,7 @@ export interface PACKAGEJSON {
   engines?: { node: string };
   funding?: { type: string; url: string };
   files?: string[];
+  publishConfig?: { access?: string };
   scripts: Partial<DEFAULTS.SCRIPTS>;
   dependencies: { [key: string]: string };
   devDependencies: { [key: string]: string };
