@@ -1,5 +1,9 @@
 # @kaaaxcreators/create
 
+[![Release CI](https://github.com/kaaaxcreators/create/actions/workflows/release.yml/badge.svg)](https://github.com/kaaaxcreators/create/actions/workflows/release.yml)
+[![npm](https://img.shields.io/npm/v/@kaaaxcreators/create)](https://www.npmjs.com/package/@kaaaxcreators/create)
+[![TypeScript](https://badgen.net/badge/TypeScript/strict%20💪/blue)](https://www.typescriptlang.org/)
+
 ## Basic Typescript ESLint Template
 
 ### 🚀 Usage
