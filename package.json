@@ -1,6 +1,6 @@
 {
   "name": "@kaaaxcreators/create",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Basic Typescript ESLint Template",
   "main": "dist/index.js",
   "bin": {
