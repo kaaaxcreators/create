@@ -17,7 +17,8 @@ export const DEFAULT: CONFIG<true> = {
     lint: 'eslint . --ignore-path ./.gitignore',
     'lint:fix': 'eslint . --ignore-path ./.gitignore --fix',
     build: 'tsc',
-    dev: 'ts-node src/index.ts'
+    dev: 'ts-node src/index.ts',
+    start: 'node dist/index.js'
   }
 };
 
@@ -131,6 +132,7 @@ export const TSCONFIG = {
     target: 'es5',
     module: 'commonjs',
     lib: ['ESNext'],
+    declaration: true,
     outDir: './dist',
     rootDir: './src',
     downlevelIteration: true,
@@ -153,4 +155,5 @@ export interface SCRIPTS {
   'lint:fix': string;
   build: string;
   dev: string;
+  start: string;
 }

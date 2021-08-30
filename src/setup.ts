@@ -128,7 +128,8 @@ function generatePackageJSON(options: OPTIONS): PACKAGEJSON {
     name: options.NAME,
     version: options.VERSION,
     description: options.DESCRIPTION,
-    main: 'src/index.ts',
+    main: 'dist/index.js',
+    types: 'dist/index.d.ts',
     author: options.AUTHOR,
     license: options.LICENSE,
     scripts: DEFAULTS.DEFAULT.scripts,
@@ -247,6 +248,7 @@ export interface PACKAGEJSON {
   description: string;
   private?: boolean;
   main?: string;
+  types?: string;
   author: string;
   license: string;
   repository?: { url: string; type: string };

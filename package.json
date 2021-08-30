@@ -6,6 +6,7 @@
   "bin": {
     "create": "dist/index.js"
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
