@@ -7,14 +7,20 @@
 #### NPM
 
 ```bash
-npm init @kaaaxcreators <project name>
+npm init @kaaaxcreators <project name> [-- args]
 ```
+
+Example: `npm init @kaaaxcreators test -- -g -w`
+
+⚠️ When using PowerShell: `npm init '@kaaaxcreators' <project name> [-- args]`
 
 #### NPX
 
 ```bash
-npx @kaaaxcreators/create <project name>
+npx @kaaaxcreators/create <project name> [args]
 ```
+
+Example: `npx @kaaaxcreators/create test -g -w`
 
 ### 📖 Options
 
@@ -27,6 +33,7 @@ npx @kaaaxcreators/create <project name>
 | -v, --version [version]          | Project Version (default: "1.0.0")                            |
 | -e, --email [email]              | Author Email (default: "bernd@kaaaxcreators.de")              |
 | -l, --license [license]          | Project License (default: "MIT")                              |
+| -g, --github                     | Add Github Files (default: false)                             |
 | -m, --manager [manager]          | Project Manager (choices: "npm", "yarn", default: "yarn")     |
 | -h, --help                       | display help for command                                      |
 
