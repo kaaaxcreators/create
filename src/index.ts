@@ -18,6 +18,7 @@ program
   .option('-v, --version [version]', 'Project Version', '1.0.0')
   .option('-e, --email [email]', 'Author Email', 'bernd@kaaaxcreators.de')
   .option('-l, --license [license]', 'Project License', 'MIT')
+  .option('-g, --github', 'Add Github Files', false)
   .addOption(
     new Option('-m, --manager [manager]', 'Project Manager')
       .choices(['npm', 'yarn'])
@@ -43,7 +44,8 @@ const runOptions = {
   FOLDER: folder,
   WEB: options.web,
   MANAGER: options.manager,
-  ORA: spinner
+  ORA: spinner,
+  GITHUB: options.github
 };
 
 if (!PACKAGEJSON_NAME_REGEX.test(runOptions.NAME)) {
