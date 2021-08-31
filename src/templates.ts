@@ -83,21 +83,6 @@ export function ESLINT(web: boolean): object {
   return obj;
 }
 
-export const STYLELINT = {
-  extends: ['stylelint-config-standard'],
-  rules: {
-    'no-descending-specificity': null
-  }
-};
-
-export const PRETTIER = {
-  semi: true,
-  tabWidth: 2,
-  printWidth: 100,
-  singleQuote: true,
-  trailingComma: 'none'
-};
-
 const VSCODE_SETTINGS = {
   'files.eol': '\n',
   'editor.tabSize': 2,

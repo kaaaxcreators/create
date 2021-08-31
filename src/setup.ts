@@ -4,7 +4,7 @@ import { access, mkdir, writeFile } from 'fs/promises';
 import { Ora } from 'ora';
 import { join } from 'path';
 
-import * as TEMPLATES from './templates';
+import { CONFIG, ESLINT, LicenseGitignore, SCRIPTS, TEMPLATES, VSCODE } from './templates';
 
 /**
  * Check if a Directory exists
@@ -64,17 +64,17 @@ export async function setupDir(options: OPTIONS): Promise<boolean> {
     // ESLint
     await writeFile(
       join(options.FOLDER, '.eslintrc.json'),
-      JSON.stringify(TEMPLATES.ESLINT(options.WEB), null, 2)
+      JSON.stringify(ESLINT(options.WEB), null, 2)
     );
 
     // .vscode
-    await recursiveSetupDir(TEMPLATES.VSCODE(options.WEB), options);
+    await recursiveSetupDir(VSCODE(options.WEB), options);
 
     // templates
-    await recursiveSetupDir(await TEMPLATES.TEMPLATES(options), options);
+    await recursiveSetupDir(await TEMPLATES(options), options);
 
     // LICENSE and .gitignore
-    await recursiveSetupDir(await TEMPLATES.LicenseGitignore(options), options);
+    await recursiveSetupDir(await LicenseGitignore(options), options);
 
     // Git
     await execa('git', ['init'], { reject: false, cwd: options.FOLDER });
@@ -92,7 +92,7 @@ export async function setupDir(options: OPTIONS): Promise<boolean> {
  * @returns {PACKAGEJSON} The Package.json as Object
  */
 function generatePackageJSON(options: OPTIONS): PACKAGEJSON {
-  const config = TEMPLATES.CONFIG(options.WEB);
+  const config = CONFIG(options.WEB);
   const JSON: PACKAGEJSON = {
     name: options.NAME,
     version: options.VERSION,
@@ -143,7 +143,7 @@ export async function writePackageJSON(options: OPTIONS): Promise<boolean> {
  * @returns {string} List of Packages to install
  */
 export function generateDeps(options: OPTIONS): string[] {
-  const depsString = TEMPLATES.CONFIG(options.WEB).packages;
+  const depsString = CONFIG(options.WEB).packages;
   return depsString;
 }
 
@@ -216,7 +216,7 @@ export interface PACKAGEJSON {
   funding?: { type: string; url: string };
   files?: string[];
   publishConfig?: { access?: string };
-  scripts: TEMPLATES.SCRIPTS;
+  scripts: SCRIPTS;
   dependencies: { [key: string]: string };
   devDependencies: { [key: string]: string };
 }
