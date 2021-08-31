@@ -76,16 +76,16 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@kaaaxcreators/config@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@kaaaxcreators/config/-/config-1.1.1.tgz#79ac27d191ed851b989412ce09c6633faff4e3bc"
-  integrity sha512-S9hzv0N10vd6Voc7bOap4H0w6v1n/UqSk7OSzsFpP1/F6rJUb+xWrBO24cdlcfAi28xZ7geQ2bGUCSxZYt/MWA==
+"@kaaaxcreators/config@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@kaaaxcreators/config/-/config-1.1.2.tgz#1400d998d0ce42e4df6ffc81256817031874c856"
+  integrity sha512-BzJqgXIiaGn0rLVOH2N4f93yafv68S3PwpL4XiKCe60x29YYK405SbYrSFtHyGShItKkGkhdv/nFj5EHTKlTNw==
   dependencies:
     "@semantic-release/changelog" "^5.0.1"
     "@semantic-release/git" "^9.0.0"
     "@semantic-release/github" "^7.2.3"
     dateformat "^4.5.1"
-    semantic-release "^17.4.3"
+    semantic-release "^17.4.7"
     semantic-release-gitmoji "^1.3.4"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -3784,7 +3784,7 @@ semantic-release-gitmoji@^1.3.4:
     lodash.uniq "^4.5.0"
     node-emoji "^1.10.0"
 
-semantic-release@^17.4.3:
+semantic-release@^17.4.7:
   version "17.4.7"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.4.7.tgz#88e1dce7294cc43acc54c4e0a83f582264567206"
   integrity sha512-3Ghu8mKCJgCG3QzE5xphkYWM19lGE3XjFdOXQIKBM2PBpBvgFQ/lXv31oX0+fuN/UjNFO/dqhNs8ATLBhg6zBg==

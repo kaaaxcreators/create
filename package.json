@@ -19,7 +19,7 @@
   "author": "Bernd Storath <bernd@kaaaxcreators.de>",
   "license": "MIT",
   "devDependencies": {
-    "@kaaaxcreators/config": "^1.1.1",
+    "@kaaaxcreators/config": "^1.1.2",
     "@types/node": "^16.7.6",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
