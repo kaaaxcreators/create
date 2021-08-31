@@ -25,7 +25,7 @@ program
       .default('yarn')
   );
 
-program.parse(process.argv);
+program.parse();
 
 const options = program.opts();
 

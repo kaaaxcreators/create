@@ -1,12 +1,10 @@
-import axios from 'axios';
 import execa from 'execa';
 import { constants } from 'fs';
 import { access, mkdir, writeFile } from 'fs/promises';
 import { Ora } from 'ora';
 import { join } from 'path';
 
-import * as DEFAULTS from './defaults';
-import { GithubContents } from './types';
+import * as TEMPLATES from './templates';
 
 /**
  * Check if a Directory exists
@@ -63,78 +61,24 @@ async function recursiveSetupDir(
  */
 export async function setupDir(options: OPTIONS): Promise<boolean> {
   try {
-    // StyleLint
-    if (options.WEB) {
-      await writeFile(
-        join(options.FOLDER, '.stylelintrc.js'),
-        'module.exports = ' + JSON.stringify(DEFAULTS.STYLELINT, null, 2) + ';\n'
-      );
-    }
-
     // ESLint
     await writeFile(
-      join(options.FOLDER, '.eslintrc.js'),
-      'module.exports = ' + JSON.stringify(DEFAULTS.ESLINT(options.WEB), null, 2) + ';\n'
+      join(options.FOLDER, '.eslintrc.json'),
+      JSON.stringify(TEMPLATES.ESLINT(options.WEB), null, 2)
     );
 
-    // Prettier
-    await writeFile(
-      join(options.FOLDER, '.prettierrc'),
-      JSON.stringify(DEFAULTS.PRETTIER, null, 2)
-    );
-    // semantic-release
-    await writeFile(join(options.FOLDER, 'release.config.js'), DEFAULTS.RELEASE);
+    // .vscode
+    await recursiveSetupDir(TEMPLATES.VSCODE(options.WEB), options);
 
-    // src/index.ts
-    await mkdir(join(options.FOLDER, 'src'));
-    await writeFile(join(options.FOLDER, 'src', 'index.ts'), '');
+    // templates
+    await recursiveSetupDir(await TEMPLATES.TEMPLATES(options), options);
 
-    // .gitignore
-    const gitignore = await axios.get(
-      'https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore',
-      { responseType: 'text' }
-    );
-    await writeFile(join(options.FOLDER, '.gitignore'), gitignore.data);
-
-    // VSCode
-    await recursiveSetupDir(DEFAULTS.VSCODE(options.WEB), options);
-
-    // Github
-    if (options.GITHUB) {
-      await recursiveSetupDir(DEFAULTS.GITHUB(options.MANAGER), options);
-    }
-
-    // README
-    await writeFile(
-      join(options.FOLDER, 'README.md'),
-      DEFAULTS.README(options.NAME, options.DESCRIPTION, options.LICENSE)
-    );
-
-    // LICENSE
-    const licenses = await axios.get<GithubContents[]>(
-      'https://api.github.com/repos/licenses/license-templates/contents/templates',
-      { responseType: 'json' }
-    );
-    const license = licenses.data.find(
-      (v) => v.name.split('.')[0].toLowerCase() === options.LICENSE.toLowerCase()
-    );
-    if (license) {
-      const response = await axios.get(license.download_url, { responseType: 'text' });
-      const text = response.data
-        .replace('{{ year }}', new Date().getFullYear())
-        .replace('{{ organization }}', options.AUTHOR)
-        .replace('{{ project }}', options.NAME);
-      await writeFile(join(options.FOLDER, 'LICENSE'), text);
-    }
+    // LICENSE and .gitignore
+    await recursiveSetupDir(await TEMPLATES.LicenseGitignore(options), options);
 
     // Git
     await execa('git', ['init'], { reject: false, cwd: options.FOLDER });
 
-    // Typescript
-    await writeFile(
-      join(options.FOLDER, 'tsconfig.json'),
-      JSON.stringify(DEFAULTS.TSCONFIG, null, 2)
-    );
     return true;
   } catch (e) {
     console.log(e);
@@ -148,7 +92,7 @@ export async function setupDir(options: OPTIONS): Promise<boolean> {
  * @returns {PACKAGEJSON} The Package.json as Object
  */
 function generatePackageJSON(options: OPTIONS): PACKAGEJSON {
-  const config = DEFAULTS.CONFIG(options.WEB);
+  const config = TEMPLATES.CONFIG(options.WEB);
   const JSON: PACKAGEJSON = {
     name: options.NAME,
     version: options.VERSION,
@@ -199,7 +143,7 @@ export async function writePackageJSON(options: OPTIONS): Promise<boolean> {
  * @returns {string} List of Packages to install
  */
 export function generateDeps(options: OPTIONS): string[] {
-  const depsString = DEFAULTS.CONFIG(options.WEB).packages;
+  const depsString = TEMPLATES.CONFIG(options.WEB).packages;
   return depsString;
 }
 
@@ -242,6 +186,7 @@ export async function run(options: OPTIONS): Promise<true | string> {
   if (!isSetup) {
     return 'Could not setup directory';
   }
+  return true;
   options.ORA.text = 'Writing Package JSON';
   const ifPackageJSON = await writePackageJSON(options);
   if (!ifPackageJSON) {
@@ -271,7 +216,7 @@ export interface PACKAGEJSON {
   funding?: { type: string; url: string };
   files?: string[];
   publishConfig?: { access?: string };
-  scripts: DEFAULTS.SCRIPTS;
+  scripts: TEMPLATES.SCRIPTS;
   dependencies: { [key: string]: string };
   devDependencies: { [key: string]: string };
 }

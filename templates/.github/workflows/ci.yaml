@@ -1,0 +1,38 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Cache node modules
+        uses: c-hive/gha-{{ MANAGER }}-cache@v1
+      - name: Install dependencies
+        run: {{#if (isYARN MANAGER)}}yarn install{{else}}npm ci{{/if}}
+      - name: Run lint command
+        run: {{#if (isYARN MANAGER)}}yarn lint{{else}}npm run lint{{/if}}
+  test:
+    name: Test
+    needs: lint
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Cache node modules
+        uses: c-hive/gha-{{ MANAGER }}-cache@v1
+      - name: Install dependencies
+        run: {{#if (isYARN MANAGER)}}yarn install{{else}}npm ci{{/if}}
+      - name: Run build command
+        run: {{#if (isYARN MANAGER)}}yarn build{{else}}npm run build{{/if}}

@@ -20,7 +20,6 @@
   "license": "MIT",
   "devDependencies": {
     "@kaaaxcreators/config": "^1.1.1",
-    "@types/json2md": "^1.5.1",
     "@types/node": "^16.7.6",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
@@ -36,13 +35,12 @@
     "axios": "^0.21.1",
     "commander": "^8.1.0",
     "execa": "^5.1.1",
-    "json2md": "^1.11.0",
-    "jsonc": "^2.0.0",
-    "ora": "5.4.1",
-    "yaml": "^1.10.2"
+    "handlebars": "^4.7.7",
+    "ora": "5.4.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "repository": {
     "url": "git+https://github.com/kaaaxcreators/create.git",
