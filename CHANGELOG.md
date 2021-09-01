@@ -1,3 +1,11 @@
+## [v1.0.2] - 2021-09-01
+
+[Release notes](https://github.com/kaaaxcreators/create/releases/tag/v1.0.2) · [Compare](https://github.com/kaaaxcreators/create/compare/v1.0.1...v1.0.2) · [Tag](https://github.com/kaaaxcreators/create/tree/v1.0.2) · Archive ([zip](https://github.com/kaaaxcreators/create/archive/v1.0.2.zip) · [tar.gz](https://github.com/kaaaxcreators/create/archive/v1.0.2.tar.gz))
+
+### Critical hotfixes
+
+- [`dcbdb6b`](https://github.com/kaaaxcreators/create/commit/dcbdb6b)  v1.0.2
+
 ## [v1.0.1] - 2021-09-01
 
 [Release notes](https://github.com/kaaaxcreators/create/releases/tag/v1.0.1) · [Compare](https://github.com/kaaaxcreators/create/compare/v1.0.0...v1.0.1) · [Tag](https://github.com/kaaaxcreators/create/tree/v1.0.1) · Archive ([zip](https://github.com/kaaaxcreators/create/archive/v1.0.1.zip) · [tar.gz](https://github.com/kaaaxcreators/create/archive/v1.0.1.tar.gz))
