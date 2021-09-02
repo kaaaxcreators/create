@@ -10,7 +10,7 @@ import { GithubContents } from './types';
 Handlebars.registerHelper('isYARN', (input: string) => input === 'yarn');
 Handlebars.registerHelper('isTRUE', (input: string) => input === 'true');
 
-const templatesFolder = join(__dirname, 'templates');
+const templatesFolder = join(__dirname, '../', 'templates');
 
 export function CONFIG(web: boolean): CONFIG_RETURN {
   const obj = {

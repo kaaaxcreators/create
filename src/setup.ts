@@ -186,7 +186,6 @@ export async function run(options: OPTIONS): Promise<true | string> {
   if (!isSetup) {
     return 'Could not setup directory';
   }
-  return true;
   options.ORA.text = 'Writing Package JSON';
   const ifPackageJSON = await writePackageJSON(options);
   if (!ifPackageJSON) {
