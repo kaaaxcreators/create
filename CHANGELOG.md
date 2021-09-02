@@ -1,3 +1,11 @@
+## [v1.0.4] - 2021-09-02
+
+[Release notes](https://github.com/kaaaxcreators/create/releases/tag/v1.0.4) · [Compare](https://github.com/kaaaxcreators/create/compare/v1.0.3...v1.0.4) · [Tag](https://github.com/kaaaxcreators/create/tree/v1.0.4) · Archive ([zip](https://github.com/kaaaxcreators/create/archive/v1.0.4.zip) · [tar.gz](https://github.com/kaaaxcreators/create/archive/v1.0.4.tar.gz))
+
+### Critical hotfixes
+
+- [`d1bb701`](https://github.com/kaaaxcreators/create/commit/d1bb701)  Fix Templates Source and Debug Leftover
+
 ## [v1.0.3] - 2021-09-01
 
 [Release notes](https://github.com/kaaaxcreators/create/releases/tag/v1.0.3) · [Compare](https://github.com/kaaaxcreators/create/compare/v1.0.2...v1.0.3) · [Tag](https://github.com/kaaaxcreators/create/tree/v1.0.3) · Archive ([zip](https://github.com/kaaaxcreators/create/archive/v1.0.3.zip) · [tar.gz](https://github.com/kaaaxcreators/create/archive/v1.0.3.tar.gz))
