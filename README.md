@@ -1,3 +1,4 @@
+Not maintained anymore. Very likely to still work
 # @kaaaxcreators/create
 
 [![Release CI](https://github.com/kaaaxcreators/create/actions/workflows/release.yml/badge.svg)](https://github.com/kaaaxcreators/create/actions/workflows/release.yml)
